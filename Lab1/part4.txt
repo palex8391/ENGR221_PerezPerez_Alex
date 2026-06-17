@@ -1,0 +1,21 @@
+a. What are the names of the functions defined in this file?
+The functions are adventure() and create_player().
+b. On what line is the adventure() function called?
+adventure() is called in line 71 win = adventure().
+c. On what line is the create_player() function called?
+create_player() is called in line 20 player_name, player_class = create_player().
+d. Which function is called first when the script is run?
+The function that is called first is on adventurer() in lines 15-16 is the first script it will run for this function.
+e. What does the input() function do (used in lines 64 and 65)?
+Lines 64 and 65 they are to determine who the user is and if the user is a Mage, Warrior, or anything else.
+f. Looking at the if block starting on line 24, what is printed if the user inputs neither
+“Warrior” nor “Mage” as their specialty?
+It will print out lines 33-35 which it doesn't recognize the specialty so it gives a certain healt and mana.
+g. What do you think is the purpose of the curly braces “{}”in the print statements on
+lines 40 and 41?
+The {} are to print the health and Mana is just numbers and not including characters and only numbers thats my guess.
+h. As written, the script runs in an infinite loop. What line in the adventure() function
+could you change to prevent this?
+To stop the infinite loop is on the return 0 because in line 69 win = 0, and 70 w == 0, and than in line 71
+win is equal to adventure() which than goes back to adventure() and repeats itself. Making return equal to 1
+makes the adventure() to end there.
