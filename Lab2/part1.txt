@@ -1,0 +1,15 @@
+Name: Alex Perez
+Class: 221 Python
+Lab 2 write up: Part 1.2
+
+a. How do we access values from the Preferences file?
+In line 9 we import the preferences and in get access to the preferences files whenever we Preferences.NUM_COLS.
+b. What type is self.board?
+A self board is a lists of of the columns and the rows. This can be treated as a 2D lists.
+c. What type is each element of self.board?
+Each element in the self.board is cell object. This is in line 14
+d. How do we access a cell on the board?
+Get access the cell on the board in the self.board rown and columns code in line 14.
+e. How do we change the type of a cell?
+Can change the type of cell when calling whatever is been define in cell class such us cell.become_player()
+this is how it can change anything.
