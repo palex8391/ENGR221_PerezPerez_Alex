@@ -100,25 +100,25 @@ class GameData:
     def move_player_right(self) -> None:
         """ Move the player one cell to the right if it is empty """
         cell = self.get_east_neighbor(self.player) # Get the cell to the right of the player
-        if cell is not None: # If the cell is not None and is empty, move the player to that cell
+        if cell is not None: # If the cell is not None, move the player to that cell
             self.move_player_to_cell(cell) # Move the player to the new cell
 
     def move_player_left(self) -> None:
         """ Move the player one cell to the left if it is empty """
         cell = self.get_west_neighbor(self.player) # Get the cell to the left of the player
-        if cell is not None: # If the cell is not None and is empty, move the player to that cell
+        if cell is not None: # If the cell is not None, move the player to that cell
             self.move_player_to_cell(cell) # Move the player to the new cell
 
     def move_player_up(self) -> None:
         """ Move the player one cell up if it is empty """
         cell = self.get_north_neighbor(self.player) # Get the cell above the player
-        if cell is not None: # If the cell is not None and is empty, move the player to that cell
+        if cell is not None: # If the cell is not None, move the player to that cell
             self.move_player_to_cell(cell) # Move the player to the new cell
 
     def move_player_down(self) -> None:
         """ Move the player one cell down if it is empty """
         cell = self.get_south_neighbor(self.player) # Get the cell below the player
-        if cell is not None: # If the cell is not None and is empty, move player to that cell
+        if cell is not None: # If the cell is not None, move player to that cell
             self.move_player_to_cell(cell) # Move the player to the new cell
 
     def move_player_to_cell(self, cell: Cell) -> None:
@@ -263,7 +263,6 @@ class GameData:
         cell = self.get_south_neighbor(enemy)
         self.move_enemy_to_cell(enemy, cell, idx)
         
-
 
 
 if __name__ == "__main__":

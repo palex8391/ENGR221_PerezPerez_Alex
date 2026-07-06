@@ -22,3 +22,11 @@ for item in my_array:
         print("not found {} in the array".format(target))
 
 item == target 
+
+selectionSort(A):
+for each index i in length(A):
+let min_idx ß i
+for each index j from i+1 to length(A):
+if A[j] < A[min_idx]:
+min_idx ß j
+swap A[i] and A[min_idx]

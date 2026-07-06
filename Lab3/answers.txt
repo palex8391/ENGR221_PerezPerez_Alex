@@ -1,0 +1,129 @@
+Alex Perez
+Date:06/29/26
+
+Part 1
+
+a. How is a new array to be sorted created?
+A new array is created in by the create_new_array() method. It uses a list to build random integers between 0 
+and the preferences.MAX_VAL, with length equal to the requested size.
+
+b. When is the new array created? (Hint: controller.py may be helpful)
+The new array is created inside the restart after the algorithm is chosen and the generator is initialized.
+In the program, that happens when the controller handles key presses for selection, insertion, bubble, or reset.
+Keyboards are S, I, B, R.
+
+c. In your own words, what does the yield keyword do in selection_sort()? (For a brief
+description, see here).
+The yield keyword turns selection sort() into a generator. It pauses the function, send back the current pair
+of the indices to the caller, and remembers where it left off so the next call can continue from that exact point.
+
+d. In your own words, what is the relationship between selection_sort() and
+get_next_step()?
+In selection sort() defines the sequence of visualization steps, while get_next_step() advances that sequence one step
+at a time. In other words, selection_sort() is the "recipe" and get_next_step() is the part that executes 
+the next recipe step.
+
+e. In the display.py file, you will see that the draw() function takes two different
+arguments (in addition to self). What are these, and when are they updated such
+that draw() displays the most current step of the algorithm?
+draw() takes the current arra() plus two index values: outer_idx() and inner_idx. These are updated by 
+get_next_step() each time the algorithm advances, and the display is redrawn with those newest values do the screen
+shows the mos current highlighted step.
+
+Part 2. Sort selection
+
+a. At a high level, what is the approach that selection sort takes to sort the items of the
+list? (i.e., why is it called selection sort?)
+It repeatedly scans the unsorted part of the list to find the smallest value, then swaps that value into the next
+position in the sorted part. It is called "selection sort" because each pass "selects" the minimum remaining item and
+places it in its final position.
+b. What is the time complexity (i.e., runtime) of selection sort (Big O notation)? How
+can you tell just by looking at the code?
+its time complexity is O(n^2). You  an tell from the nested loops: the outer loop runs about n times,
+and for each pass the inner loop checks nearly all remaining elements, so the total number of comparisons is 
+about (n(n-1)/2).
+c. What is the space complexity (i.e., additional storage usage) of selection sort (Big O
+notation)? How can you tell just by looking at the code?
+Its space complexity is O(1) extra space. You can tell because it sorts the list in place and only uses a few 
+constant-size varaibles such as indices and a temporary swap value; it does not create a new array of size n.
+
+Part 3. Insertion_sort
+a. At a high level, what is the approach that insertion sort takes to sort the items of the
+list? (i.e., why is it called insertion sort?)
+Insertion sort builds the sorted list one item at a time. It starts with the first element as "sorted," then 
+takes each next element and inserts it into the correct position amoing the earlier elements by shifting larger
+values to the right. It is called insertion sort because each new item is placed into its proper place in the 
+already sorted portion.
+b. What is the time complexity (i.e., runtime) of insertion sort (Big O notation)? How
+can you tell just by looking at the pseudocode?
+The time complexity is O(n^2). You can tell because the outer loop runs through the list, and for each element the
+inner while loop may compare and shift it left through many earlier positions. In the worst case, that means
+about n^2/2 operations which is still O(n^2).
+c. What is the space complexity (i.e., additional storage usage) of insertion sort (Big O
+notation)? How can you tell just by looking at the pseudocode
+The space complexity is O(1) extra space. You can tell because the algorithm sorts the list in place using only a few
+variables like i, j, and temporary swap values; it does not need to create a new array of size n.
+
+Part 4. Bubble_sort
+a. At a high level, what is the approach that insertion sort takes to sort the items of the
+list? (i.e., why is it called bubble sort?)
+Bubble sort repeatedly compares neighboring items and swaps them if they are out of order. Larger values
+"bubble" toward the end if the list after each pass.
+b. What is the time complexity (i.e., runtime) of bubble sort (Big O notation)? How can
+you tell just by looking at the pseudocode?
+The time complexity is O(n^2) because there is a nested loop: the outer loop runs thorugh the list, and
+the inner loop compares many neighboring pairs.
+c. What is the space complexity (i.e., additional storage usage) of bubble sort (Big O
+notation)? How can you tell just by looking at the pseudocode?
+The space complexity is O(1) because it sorts in-place and only uses a few extra variables like i and j.
+
+Part 4.4 Give AI a Prompt to write bubble_sort code in python
+a. What tool are you using (e.g., ChatGPT, Claude)?
+I used Chatgpt for this.
+b. What prompt did you input?
+Prompt: “Write a Python bubble_sort function that sorts a list in-place without using Python’s built-in sort."
+c. What was the output code it provided?
+def bubble_sort(self):
+    """An implementation of the Bubble Sort algorithm."""
+    n = len(self.array)
+
+    for i in range(n - 1):
+        for j in range(n - 1 - i):
+            yield j, j + 1
+
+            if self.array[j] > self.array[j + 1]:
+                self.array[j], self.array[j + 1] = self.array[j + 1], self.array[j]
+                yield j, j + 1
+
+This was the code it privided me with chatgpt
+d. Does the function run in-place (i.e., does it create or return a new list)?
+Yes, it runs in-place because it modifies self.array directly and does not create or return a new list.
+e. What similarities and differences do you notice between the version given by the
+tool and the pseudocode provided in 1?
+It is similar to the pseudocode because it uses nested loops, compares A[j] and A[j+1], and swaps them when needed. 
+It is different because it uses self.array instead of A, and it uses yield instead of print(A) 
+so the GUI can show each step.
+f. What, if anything would you would have done differently if you had written the
+function yourself?
+I would add comments and yield statements so the sorting process can be visualized clearly.
+
+PART 5: Compare the Algorithms (Answers for this portion)
+a. How long does selection_sort() take to sort 100 items? 1,000? 10,000?
+100 items: 0.000815 seconds
+1,000 items: 0.147 seconds
+10,000 items: 9.01 seconds
+b. How long does insertion_sort() take to sort 100 items? 1,000? 10,000?
+100 items: 0.00129 seconds
+1,000 items: 0.134 seconds
+10,000 items: 14.27 seconds
+c. How long does bubble_sort() take to sort 100 items? 1,000? 10,000?
+100 items: 0.00154 seconds
+1,000 items: 0.231 seconds
+10,000 items: 19.96 seconds
+d. What conclusion(s) can you draw about Big O time complexities based on these
+runtimes, knowing that their Big O runtimes are the same?
+Even though selection sort, insertion sort, and bubble sort all have O(n²) worst-case time complexity, 
+their actual runtimes can still be different. Big O describes the general growth rate as the input size gets larger, 
+but it does not show smaller details like how many swaps happen, how many comparisons happen, or how efficient 
+the code is. Bubble sort is usually slower because it may do many repeated swaps. Selection sort usually 
+does fewer swaps, and insertion sort can be faster when the list is already partly sorted. 
