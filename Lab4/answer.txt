@@ -1,0 +1,42 @@
+Name: Alex Perez
+Date: 7/08/26
+
+## Part  1
+
+a. How is the player’s location on the board represented?
+The players location is represented by the cell object in the board. Is also determined in the board 2D list
+of objects, and the player position is the first item in the body list. The game starts the player
+in the top left.
+b. What method(s) are given to help access different parts of the player’s “body”?
+The methods use are get_player() which return the head of the body list body[0].
+get_tail() which returns the tail of the body list
+c. What are the different movement modes of the player, and what do they mean in
+terms of how the player moves each turn?
+MoveMode: which declares all the movement of the player north, east, south, and west.
+d. Note that the player’s next step is determined in the move_player() method. What is
+the current behavior of get_next_cell()? get_next_cell_ai()?
+The_next_cell() checks the current mode and returns the adjacent cell in that direction using the appropiate neighbor
+like return none. get_next_call_ai() is not fully implemented yet. it resets search information and sets up either a 
+stack or queue depending on ai_type, but then simply returns a random valid neighbor of the player via 
+get_random_neighbor(section)
+
+## Part 2.
+
+a. When you add an item to a stack, where should it be added? (beginning/end)
+When adding to a stack, add to the end.
+b. When you remove an item from a stack, which item should be removed? (beginning/end)
+When removing from a stack, Remove from the end.
+c. When you add an item to a queue, where should it be added? (beginning/end)
+When adding to a queue, add to the end.
+d. When you remove an item from a queue, which item should be removed? (beginning/end)
+When removing from queue, remove from the begginning.
+
+## Part 3
+
+a. What happens when you run AI mode with DFS? Explain why the player behaves in
+this way.
+When AI mode runs with DFS, the player may take a longer or less direct path to the food.
+This happens because DFS explores deeply in one direction before trying other possible paths
+b. Will DFS or BFS find a shorter path to a food? Why?
+BFS will find the shorter path to food because it searches all nearby cells first before moving farther away.
+DFS does not guarantee the shortest path.
