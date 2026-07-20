@@ -1,0 +1,45 @@
+Alex Perez
+Date: 07/13/26
+
+a. How do the draw_snowflake_recursive() and draw_snowflake_stack() functions
+draw a full snowflake?
+Both methods initialize the turtle and use a loop that runs three times. Each loop iteration draws one Koch curve,
+which forms one side of the snowflake. After drawing a side, the turtle turns left 120 degrees so that it is facing 
+the correct direction for the next side. After three sides are drawn, the result is a complete Koch snowflake.
+
+b. How many “sides” of the snowflake does each initial call of draw_curve_recursive()
+and draw_curve_stack() draw?
+Each initial call draws one side of the snowflake. The draw_snowflake methods call the curve method three times
+to create all three sides.
+c. How does get_time_and_mem() find the total time that a method takes to run?
+The method records the starting time with time.perf_counter(). It then runs the given function while
+memory_usage() measures its memory use. After the function finishes, it records the ending time. 
+The total runtime is calculated by subtracting the starting time from the ending time.
+
+PART 4
+a. What was the memory and time taken by each method?
+
+Run compare_snowflake() on your computer and copy the four printed values here:
+
+Recursive memory usage: 43.87109375 MB
+Non-recursive memory usage: 32.27734375 MB
+Recursive time taken: 1.76563 seconds
+Non-recursive time taken: 1.46987 seconds
+
+The exact values depend on the computer, operating system, Python version, turtle graphics speed, and
+selected snowflake depth.
+
+b Why do these results make sense based on what the methods do under the hood?
+
+The recursive method uses Python's call stack. Every recursive call stores information such as the current length,
+depth, and return location. As the recursion becomes deeper, more stack frames are created,
+so recursion usually requires more memory.
+
+The non-recursive method avoids recursive function calls, but it creates its own list named commands
+and uses that list as a stack. It still stores unfinished work, but the information is stored as command
+tuples instead of Python function-call frames. This often reduces function-call overhead and may use less memory.
+
+The runtime results may be close because both methods ultimately draw the same number of line segments
+and perform the same turns. At depth d, one side contains 4^d straight segments, and the full snowflake contains
+3 x 4^d straight segments. Turtle drawing can take much more time than the algorithm's bookkeeping,
+so the measured times can vary between runs.
