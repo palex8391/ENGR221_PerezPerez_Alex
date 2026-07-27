@@ -1,0 +1,64 @@
+Author: Alex Perez
+Date: 7/22/26
+
+Part 2: Planting the seeds
+
+a. What are the values of NodeType and what do they represent?
+The NodeType values are SCHOOL, PROGAM, and FACULTY. SCHOOL represents the root School of Engineering node. 
+PROGAM represents one engineering program or department. FACULTY represents an individual professor. 
+The starter code spells PROGRAM as PROGAM, so the solution keeps that spelling.
+
+b. How might a node know whether it is a leaf?
+A node is a leaf when it has no children. The node can check whether the length of its children list is zero.
+
+c. What does the height of a node refer to?
+The height is the number of edges in the longest downward path from that node to a leaf.
+A leaf has height 0. A node whose children are all leaves has height 1.
+
+d. What does the depth of a node refer to?
+The depth is the number of edges from the root to that node. The root has depth 0, its children have depth 1, 
+and its grandchildren have depth 2.
+
+e. How can you traverse through a tree to find a particular value such as last_name?
+Start at the current node and compare its name with the value being searched for. If it matches, 
+return that node. Otherwise, recursively search each child and its descendants. If none of the branches contains 
+the value, return None. This solution uses a depth-first pre-order traversal.
+
+
+PART 3: Department meeting
+
+a. What is the data type of faculty_dict? What are the keys and values? How would you access a professor?
+faculty_dict is a Python dictionary, which is a hash map. Its keys are professor last names stored as strings, 
+and its values are Professor objects. A professor can be accessed with faculty_dict["Kubota"]. 
+A safer lookup is faculty_dict.get("Kubota"), which returns None instead of causing an error when the key is missing.
+
+b. What is the data type of program_structure?
+program_structure is a TreeNode object. More specifically, it is the root TreeNode of the entire School of Engineering
+tree.
+
+c. What is stored in df, and what does the lambda function do?
+df is a pandas DataFrame containing the information read from faculty_list.xlsx. Each row represents one professor 
+and includes fields such as first name, last name, rank, program, and office. The lambda function receives one 
+row at a time and passes that row and faculty_dict to add_prof(). The argument axis=1 tells pandas to apply the 
+function by rows rather than by columns.
+
+
+PART 4: Office hours now in session
+
+a. What is the type of self.faculty? What data does it store?
+self.faculty is a dictionary. It stores professor last names as keys and Professor objects as values.
+
+b. What is the type of self.root? How can the rest of the tree be accessed from only the root?
+self.root is a TreeNode. Every TreeNode stores a children list. Starting at the root, the program can visit 
+each child and then recursively visit each child's children, allowing it to reach every node in the tree.
+
+c. In what order are nodes drawn by draw_tree()?
+The nodes are drawn using pre-order depth-first traversal. The method draws the current node first, 
+then recursively draws each child subtree from left to right.
+
+d. Trace user_text after Return is pressed. What method receives it?
+run() begins with user_text as an empty string. Each regular key press adds event.unicode to user_text, 
+and Backspace removes the final character. When Return is pressed, run() removes outside spaces with strip(), 
+capitalizes the first letter with capitalize(), and passes the result to show_info(). show_info() 
+looks up the last name in self.faculty and displays either the Professor information or an error message. 
+After the lookup, run() resets user_text to an empty string.

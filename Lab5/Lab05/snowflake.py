@@ -193,9 +193,8 @@ class KochSnowflake:
 
 if __name__ == "__main__":
      # Change the second value to 0, 1, 2, 3, and so on to test depths.
-    s = KochSnowflake(500, 0)
+    s = KochSnowflake(500, 3)
     # Run one of these at a time:
     s.draw_snowflake_stack()
     # s.draw_snowflake_stack()
     # s.compare_snowflake()
-
