@@ -1,4 +1,9 @@
-""" TODO Your program header """
+""" 
+thor: Alex Perez Perez
+Last updated: July 26, 2026
+Description: Uses Pygame to draw the Engineering faculty tree and lets a
+user look up a professor by last name.
+"""
 
 import pygame
 
